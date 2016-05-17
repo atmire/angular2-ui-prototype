@@ -15,22 +15,22 @@ import { TranslatePipe } from "ng2-translate/ng2-translate";
                     <div class="row">
                         <div class="col-xs-7 col-sm-8">
                             <div>
-                                <a target="_blank" href="http://www.dspace.org">DSpace software</a>
-                                <span>copyright 2002-2016</span>
-                                <a target="_blank" href="http://www.duraspace.org/">DuraSpace</a>
+                                <a target="_blank" href="http://www.dspace.org">{{ 'footer.dspace' | translate }}</a>
+                                <span>{{ 'footer.copyright' | translate }}</span>
+                                <a target="_blank" href="http://www.duraspace.org/">{{ 'footer.duraspace' | translate }}</a>
                             </div>
 
                             <div class="hidden-print">
-                                <a href="#">Contact</a>
+                                <a href="#">{{ 'footer.contact' | translate }}</a>
                                 <span> | </span>
-                                <a href="#">Send feedback</a>
+                                <a href="#">{{ 'footer.feedback' | translate }}</a>
                             </div>
                         </div>
 
                         <div class="col-xs-5 col-sm-4 hidden-print">
                             <div class="pull-right">
-                                <span>Theme by</span>
-                                <a href="http://www.dspace.org">DSpace</a>
+                                <span>{{ 'footer.themeby' | translate }}</span>
+                                <a href="http://www.dspace.org">{{ 'footer.themeowner' | translate }}</a>
                             </div>
                         </div>
                     </div>

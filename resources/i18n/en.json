@@ -129,6 +129,14 @@
     
     "item.create.processing": "Item {{name}} is being created. Please wait.",
     "item.create.success": "Item {{name}} was created successfully.",
-    "item.create.error": "Error creating item {{name}}."
+    "item.create.error": "Error creating item {{name}}.",
+
+
+    "footer.dspace" : "DSpace software",
+    "footer.duraspace" : "DuraSpace",
+    "footer.copyright" : "copyright © 2002-2016",
+    "footer.contact" : "Contact us",
+    "footer.themeby" : "Theme by",
+    "footer.themeowner" : "DSpace"
 
 }
