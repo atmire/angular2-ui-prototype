@@ -23,6 +23,7 @@ import { NotificationComponent } from './utilities/notification/notification.com
 import { RegistrationComponent } from './dspace/authorization/registration/registration.component';
 import { SettingsComponent } from './settings.component';
 import { SetupComponent } from './setup.component';
+import { DspaceFooterComponent } from './dspace/components/dspace-footer.component';
 
 import { User } from './dspace/models/user.model';
 
@@ -38,7 +39,8 @@ import { User } from './dspace/models/user.model';
                   BreadcrumbComponent,
                   ContextComponent,
                   LoginModalComponent,
-                  NotificationComponent ],
+                  NotificationComponent,
+                  DspaceFooterComponent ],
     pipes: [ TranslatePipe ],
     template: `
                 <nav class="navbar navbar-inverse">
@@ -80,7 +82,11 @@ import { User } from './dspace/models/user.model';
                     </div>
                 </div>
 
+                <dspace-footer></dspace-footer>
+
                 <login-modal #login></login-modal>
+
+
               `
 })
 @RouteConfig([

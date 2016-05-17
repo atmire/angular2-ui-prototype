@@ -84,6 +84,16 @@ html, body {
     display: block;
 }
 
+
+/* for the footer */
+
+
+footer .row > div{
+    padding-top:20px;
+    border-top: 1px solid #eee;
+}
+
+
 /* bootstrap overrides */
 
 .navbar {
