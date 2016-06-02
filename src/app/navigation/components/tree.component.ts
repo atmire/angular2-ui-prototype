@@ -23,7 +23,7 @@ import { PaginationComponent } from './pagination.component';
                   PaginationComponent ],
     pipes : [TranslatePipe],
     template: `
-                <h1>{{ 'tree.header' | translate }}</h1>
+                <h1>{{ header | translate }}</h1>
                 <ul class="list-group">
                     <li *ngFor="let hierarchy of hierarchies" class="list-group-item">
                         <span *ngIf="collapsedCommunity(hierarchy)" (click)="hierarchy.toggle()" class="ion-icon ion-ios-plus-empty clickable"></span>
@@ -64,7 +64,7 @@ export class TreeComponent {
      * The string needs to match one in en.json
      * @type {string}
      */
-    @Input() private header : string = "hello world";
+    @Input() private header : string;
 
     /**
      *
