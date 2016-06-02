@@ -115,7 +115,7 @@ export class AdminSidebarComponent implements OnInit, OnDestroy
     {
         // generate a random ID based on the current time in ms.
         // assign this ID to the SidebarSections with a prefix, so we can easily distinguish which sections were added by users.
-        let parentSection = SidebarSection.getBuilder().generateUserID(true).name("untitled").build();
+        let parentSection = SidebarSection.getBuilder().generateUserID(true).name("untitled").persist(false).build();
         this.addChildSectionField(parentSection);
         this.sidebarService.addSection(parentSection);
         this.entries = this.sidebarService.getCustomSections().slice(0);
@@ -128,7 +128,7 @@ export class AdminSidebarComponent implements OnInit, OnDestroy
      */
     addChildSectionField(parent : SidebarSection)
     {
-        let childSection = SidebarSection.getBuilder().generateUserID(true).url("http://www.google.com").name("untitled").build(); // let our builder generate an ID.
+        let childSection = SidebarSection.getBuilder().generateUserID(true).persist(false).url("http://www.google.com").name("untitled").build(); // let our builder generate an ID.
         this.sidebarService.addChildSection(parent,childSection);
         this.entries = this.sidebarService.getCustomSections().slice(0); // update the entries on this page. slice to change reference.
     }
@@ -174,6 +174,8 @@ export class AdminSidebarComponent implements OnInit, OnDestroy
             let jsonString = JSON.stringify(this.entries);
             xhr.send(jsonString);
         });
+
+        this.sidebarService.persistSections();
     }
 
 
@@ -186,6 +188,8 @@ export class AdminSidebarComponent implements OnInit, OnDestroy
         if(this.subscription){
             this.subscription.unsubscribe();
         }
+
+        this.sidebarService.removeUnpersisted();
     }
 
     /**
@@ -195,6 +199,7 @@ export class AdminSidebarComponent implements OnInit, OnDestroy
     removeSection(index)
     {
         let section : SidebarSection = this.entries[index];
+        
         this.sidebarService.removeSection(section);
     }
 

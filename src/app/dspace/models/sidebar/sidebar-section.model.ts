@@ -49,6 +49,8 @@ export class SidebarSection implements Hashable, Equatable<SidebarSection>
     visibilityObserver : any;
 
 
+    isPersisted = true; // normally they are persisted
+
 
     /**
      * The childsections this section contains
@@ -389,6 +391,13 @@ class Builder
     url(destination : string) : Builder
     {
        this.section.url = destination;
+        return this;
+    }
+
+
+    persist(peristed : boolean) : Builder
+    {
+        this.section.isPersisted = peristed;
         return this;
     }
 

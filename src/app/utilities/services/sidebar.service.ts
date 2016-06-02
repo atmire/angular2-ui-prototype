@@ -34,6 +34,11 @@ export class SidebarService
 
 
     /**
+     *
+     */
+    showUnpersisted = true; // by default show them.
+
+    /**
      * @param viewportService
      *      A singleton service that classifies the viewport's width
      * @param router
@@ -99,7 +104,16 @@ export class SidebarService
                 section.childsections = this.filterAndOrderSections(section.childsections);
            }
         });
-        return sections.sort(function(c1,c2) { return c1.index-c2.index;});
+
+        if (this.showUnpersisted)
+        {
+            return sections.sort(function(c1,c2) { return c1.index-c2.index;});
+        }
+        else
+        {
+            console.log("showing nothing lol");
+        }
+
     }
 
 
@@ -212,6 +226,49 @@ export class SidebarService
         return this.components.filter(x => x.id.indexOf("custom") > -1);
     }
 
+
+    removeUnpersisted()
+    {
+        console.log("removing unfiltered");
+        this._components = this.removeUnpersistedSections(this._components).slice(0);
+    }
+
+    removeUnpersistedSections(sections : Array<SidebarSection>)
+    {
+        let filtered : Array<SidebarSection>= null;
+        sections.forEach(section =>
+        {
+            if(section.childsections!=null)
+            {
+                section.childsections = this.removeUnpersistedSections(section.childsections).slice(0);
+            }
+            filtered = sections.filter(x => x.isPersisted); // TODO: use .equals again after casting the custom components.
+        });
+        if(filtered != null){
+            sections = filtered;
+        }
+        return sections;
+    }
+
+
+    persistSections()
+    {
+        console.log("persistion sections");
+        this._components = this.persistAll(this._components).slice(0);
+    }
+
+    persistAll(sections : Array<SidebarSection>)
+    {
+        sections.forEach(section =>
+        {
+            if(section.childsections!=null)
+            {
+                section.childsections = this.persistAll(section.childsections).slice(0);
+            }
+            section.isPersisted = true;
+        });
+        return sections;
+    }
 
     /**
      * 
