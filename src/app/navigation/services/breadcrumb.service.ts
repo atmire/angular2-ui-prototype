@@ -31,9 +31,9 @@ export class BreadcrumbService {
      */
     constructor(private contextProvider : ContextProviderService) {
         this.root = {
-            name: 'Dashboard',
-            type: 'dashboard',
-            component: '/Dashboard'
+            name: 'home',
+            type: 'home',
+            component: '/Home'
         };
         this.emitter = new EventEmitter<any>();
     }
